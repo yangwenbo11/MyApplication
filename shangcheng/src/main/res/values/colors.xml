@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#eb4f38</color>
+    <color name="colorPrimaryDark">#eb4f38</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="bg_color">#f1f1f1</color>
+    <color name="black">#000000</color>
+    <color name="gainsboro">#dcdcdc</color>
+    <color name="firebrick">#b22222</color>
+    <color name="white_color_disable">#7fffffff</color>
+    <color name="red_btn_color_disable">#7fff5454</color>
+    <color name="red_btn_color_pressed">#ffd24242</color>
+    <color name="red_btn_color_normal">#ffff5454</color>
+    <color name="darkgrey">#a9a9a9</color>
+</resources>
