@@ -13,4 +13,6 @@
     <color name="red_btn_color_pressed">#ffd24242</color>
     <color name="red_btn_color_normal">#ffff5454</color>
     <color name="darkgrey">#a9a9a9</color>
+    <color name="grey">#808080</color>
+    <color name="crimson">#dc143c</color>
 </resources>
