@@ -32,6 +32,15 @@ public class ShopToolbar extends Toolbar {
     private EditText mSearchview;
     private TextView mTextTitle;
     private ImageButton mLeftButton;
+
+    public Button getmRightButton() {
+        return mRightButton;
+    }
+
+    public void setmRightButton(Button mRightButton) {
+        this.mRightButton = mRightButton;
+    }
+
     private Button mRightButton;
 
     public ShopToolbar(Context context) {
@@ -72,7 +81,7 @@ public class ShopToolbar extends Toolbar {
         }
     }
 
-    private void setRightButtonText(CharSequence rightButtonText) {
+    public void setRightButtonText(CharSequence rightButtonText) {
         if (mRightButton != null) {
             mRightButton.setText(rightButtonText);
         }
@@ -119,6 +128,7 @@ public class ShopToolbar extends Toolbar {
     public void hideSearchView() {
         if (mSearchview != null) {
             mSearchview.setVisibility(GONE);
+            mRightButton.setVisibility(GONE);
         }
     }
 
@@ -150,5 +160,7 @@ public class ShopToolbar extends Toolbar {
     public void setRightButtonClickLinstener(OnClickListener listener) {
         mRightButton.setOnClickListener(listener);
     }
+
+
 }
 

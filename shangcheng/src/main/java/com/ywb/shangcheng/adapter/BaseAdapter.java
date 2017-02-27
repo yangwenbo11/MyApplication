@@ -67,7 +67,7 @@ public abstract class BaseAdapter<T,H extends BaseViewHolder> extends RecyclerVi
     }
 
 
-    protected abstract void convert(H holder,T item);
+    protected abstract void convert(H holder, T item);
     public interface OnItemClickListener{
         void onItemClick(View view,int position);
     }

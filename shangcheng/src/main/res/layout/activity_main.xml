@@ -12,7 +12,9 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
+        android:id="@+id/toolbar"
         app:isShowSearchView="true"
+        app:rightButtonText="分享"
         app:title="主页"
         />
     <FrameLayout
