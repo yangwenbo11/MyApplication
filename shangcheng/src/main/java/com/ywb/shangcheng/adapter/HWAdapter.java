@@ -54,4 +54,9 @@ public class HWAdapter extends SimpleAdapter<Wares> {
         cart.setStock(item.getStock());
         return cart;
     }
+    public void resetLayout(int layoutId) {
+        this.mLayoutResId = layoutId;
+        notifyItemRangeChanged(0, getItemCount());
+
+    }
 }

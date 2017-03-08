@@ -1,9 +1,5 @@
 package com.ywb.shangcheng.wight;
 
-/**
- * Created by Administrator on 2017/2/13.
- */
-
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
@@ -32,15 +28,6 @@ public class ShopToolbar extends Toolbar {
     private EditText mSearchview;
     private TextView mTextTitle;
     private ImageButton mLeftButton;
-
-    public Button getmRightButton() {
-        return mRightButton;
-    }
-
-    public void setmRightButton(Button mRightButton) {
-        this.mRightButton = mRightButton;
-    }
-
     private Button mRightButton;
 
     public ShopToolbar(Context context) {
@@ -76,6 +63,7 @@ public class ShopToolbar extends Toolbar {
             if (isShowSearchView) {
                 showSearchView();
                 hideTitleView();
+                hideRightButtonText();
             }
             a.recycle();
         }
@@ -86,6 +74,16 @@ public class ShopToolbar extends Toolbar {
             mRightButton.setText(rightButtonText);
         }
         mRightButton.setVisibility(VISIBLE);
+    }
+
+    public Button getRightButton() {
+        return this.mRightButton;
+    }
+
+    public void hideRightButtonText() {
+        if (mRightButton != null) {
+            mRightButton.setVisibility(GONE);
+        }
     }
 
     private void initView() {
@@ -128,7 +126,6 @@ public class ShopToolbar extends Toolbar {
     public void hideSearchView() {
         if (mSearchview != null) {
             mSearchview.setVisibility(GONE);
-            mRightButton.setVisibility(GONE);
         }
     }
 
@@ -141,14 +138,17 @@ public class ShopToolbar extends Toolbar {
     public void hideTitleView() {
         if (mTextTitle != null) {
             mTextTitle.setVisibility(GONE);
+            mRightButton.setVisibility(GONE);
         }
     }
+
     public void setLeftButtonIcon(Drawable leftIcon) {
         if (mLeftButton != null) {
             mLeftButton.setImageDrawable(leftIcon);
             mLeftButton.setVisibility(VISIBLE);
         }
     }
+
     //设置右边的按钮
     public void setRightButtonIcon(Drawable rightIcon) {
         if (mRightButton != null) {
@@ -157,10 +157,21 @@ public class ShopToolbar extends Toolbar {
         }
     }
 
+    //设置右边的按钮
+    public void setRightButtonIcon(int icon) {
+        // 第一种setRightButtonIcon(getResources().getDrawable(icon));
+        //第二种
+        if (mRightButton != null) {
+            mRightButton.setBackgroundResource(icon);
+            mRightButton.setVisibility(VISIBLE);
+        }
+    }
+
     public void setRightButtonClickLinstener(OnClickListener listener) {
         mRightButton.setOnClickListener(listener);
     }
 
-
+    public void setLeftButtonClickLinstener(OnClickListener listener) {
+        mLeftButton.setOnClickListener(listener);
+    }
 }
-

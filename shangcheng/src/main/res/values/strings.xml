@@ -6,4 +6,5 @@
     <string name="cart">购物车</string>
     <string name="mine">我的</string>
     <string name="add_cart">已添加到购物车</string>
+    <string name="wares_title">商品列表</string>
 </resources>

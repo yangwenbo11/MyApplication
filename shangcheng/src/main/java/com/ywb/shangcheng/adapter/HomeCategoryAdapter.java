@@ -1,5 +1,8 @@
 package com.ywb.shangcheng.adapter;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -99,19 +102,32 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
         public void onClick(View view) {
             HomeCampaign homeCampaign=mDatas.get(getLayoutPosition());
             if(mListener!=null){
-                switch (view.getId()){
-                    case R.id.big_iv:
-                        mListener.onClick(view,homeCampaign.getCpOne());
-                        break;
-                    case R.id.small_top_iv:
-                        mListener.onClick(view,homeCampaign.getCpTwo());
-                        break;
-                    case R.id.small_bottom_iv:
-                        mListener.onClick(view,homeCampaign.getCpThree());
-                        break;
-
-                }
+                anim(view);
             }
+        }
+
+        private void anim(final View v) {
+            ObjectAnimator animator = ObjectAnimator.ofFloat(
+                    v, "rotationX", 0.0f, 360.0f
+            ).setDuration(200);
+            animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    HomeCampaign homeCampaign = mDatas.get(getLayoutPosition());
+                    switch (v.getId()) {
+                        case R.id.big_iv:
+                            mListener.onClick(v, homeCampaign.getCpOne());
+                            break;
+                        case R.id.small_top_iv:
+                            mListener.onClick(v, homeCampaign.getCpTwo());
+                            break;
+                        case R.id.small_bottom_iv:
+                            mListener.onClick(v, homeCampaign.getCpThree());
+                            break;
+                    }
+                }
+            });
+            animator.start();
         }
     }
     public interface OnCampaignClickListener{

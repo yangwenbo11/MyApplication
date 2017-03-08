@@ -95,7 +95,7 @@ public class CartFragment extends Fragment implements View.OnClickListener {
         mToolBar.setTitle(R.string.cart);
         mToolBar.setRightButtonText("编辑");
         mToolBar.setRightButtonClickLinstener(this);
-        mToolBar.getmRightButton().setTag(ACTION_EDIT);
+        mToolBar.getRightButton().setTag(ACTION_EDIT);
     }
 
     @Override
@@ -113,7 +113,7 @@ public class CartFragment extends Fragment implements View.OnClickListener {
         mTextTotal.setVisibility(View.VISIBLE);
         mBtnOrder.setVisibility(View.VISIBLE);
         mBtnDel.setVisibility(View.GONE);
-        mToolBar.getmRightButton().setTag(ACTION_EDIT);
+        mToolBar.getRightButton().setTag(ACTION_EDIT);
         mAdapter.checkAllOrNone(true);
         mAdapter.showTotalPrice();
         mCheckBox.setChecked(true);
@@ -124,7 +124,7 @@ public class CartFragment extends Fragment implements View.OnClickListener {
         mTextTotal.setVisibility(View.GONE);
         mBtnOrder.setVisibility(View.GONE);
         mBtnDel.setVisibility(View.VISIBLE);
-        mToolBar.getmRightButton().setTag(ACTION_COMPLETE);
+        mToolBar.getRightButton().setTag(ACTION_COMPLETE);
         mAdapter.checkAllOrNone(false);
         mCheckBox.setChecked(false);
     }

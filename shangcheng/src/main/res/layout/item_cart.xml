@@ -50,7 +50,7 @@
                 android:textColor="@color/crimson"
                 android:textSize="16sp" />
 
-            <com.bc.ywj.yjshop.wight.NumberAddSubView
+            <com.ywb.shangcheng.wight.NumberAddSubView
                 android:id="@+id/item_cart_num_nasv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

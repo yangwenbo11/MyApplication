@@ -1,5 +1,6 @@
 package com.ywb.shangcheng.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.Indicators.PagerIndicator;
@@ -19,6 +19,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.google.gson.Gson;
 import com.ywb.shangcheng.R;
+import com.ywb.shangcheng.activity.WareListActivity;
 import com.ywb.shangcheng.adapter.HomeCategoryAdapter;
 import com.ywb.shangcheng.adapter.decoration.CardViewItemDecoration;
 import com.ywb.shangcheng.entity.Banner;
@@ -75,51 +76,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-        /* String url = "http://101.200.167.75:8080/phoenixshop/banner/query?type=1";
-        OkHttpClient client = new OkHttpClient();
-
-        RequestBody body = new FormBody.Builder()
-                .add("type", "1")
-                .build();
-
-        Request request = new Request.Builder()
-                .url(url)
-                .post(body)
-                .build();
-
-
-//        Request request=new Request.Builder()
-//                .url(url)
-//                .build();
-
-
-        client.newCall(request).enqueue(new Callback() {
-            //请求网络时出现不可恢复的错误时调用该方法
-            @Override
-            public void onFailure(Call call, IOException e) {
-
-            }
-
-            //请求网络成功时调用该方法
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                //判断http状态码
-                if (response.isSuccessful()) {
-                    String json = response.body().string();
-                    Log.e("TAG", "json=" + json);
-                    Type type = new TypeToken<List<Banner>>() {
-                    }.getType();
-                    mBanners = mGson.fromJson(json, type);
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            initSlider();
-                        }
-                    });
-
-                }
-            }
-        });*/
     }
 
     private void initRecyclerView(View view) {
@@ -153,26 +109,6 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-// List<HomeCategory> datas = new ArrayList<>();
-//        HomeCategory category = new HomeCategory(
-//                "热门活动", R.drawable.img_big_1,
-//                R.drawable.img_1_small1, R.drawable.img_1_small2);
-//        datas.add(category);
-//        category = new HomeCategory("品牌街", R.drawable.img_big_2,
-//                R.drawable.img_2_small1, R.drawable.img_2_small2);
-//        datas.add(category);
-//        category = new HomeCategory("金融街 包赚翻", R.drawable.img_big_3,
-//                R.drawable.img_3_small1, R.drawable.img_3_small2);
-//        datas.add(category);
-//        category = new HomeCategory("超值购", R.drawable.img_big_0,
-//                R.drawable.img_0_small1, R.drawable.img_0_small2);
-//        datas.add(category);
-//
-//        mAdapter = new HomeCategoryAdapter(datas);
-//        mRecyclerView.setAdapter(mAdapter);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(
-//                this.getActivity()));
-//        //添加装饰器
     }
 
     private void initData(List<HomeCampaign> homeCampaigns) {
@@ -185,8 +121,11 @@ public class HomeFragment extends Fragment {
         mAdapter.setOnCampaignClickListener(new HomeCategoryAdapter.OnCampaignClickListener() {
             @Override
             public void onClick(View view, Campaign campaign) {
-                Toast.makeText(getContext(),"title="+campaign.getTitle(),
-                        Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(),
+                        WareListActivity.class);
+                intent.putExtra(Contants.COMPAIGN_ID,
+                        campaign.getId());
+                startActivity(intent);
             }
         });
     }
